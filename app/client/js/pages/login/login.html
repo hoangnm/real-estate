@@ -1,0 +1,29 @@
+<div class="login-box">
+    <div class="thumbnail-item-image"></div>
+    <div class="login-logo">
+        <span class="logo-lg"><b>{{ 'COMMON.WEB_TITLE' | translate }}</b></span>
+    </div>
+
+    <div class="login-box-body">
+        <form name="loginForm">
+            <h3 class="login-box-msg text-light-blue">{{ 'BOTTON.SIGIN' | translate }}</h3>
+            <div ng-show="vm.showError" class="alert alert-danger alert-dismissible">
+                {{ 'LOGIN.LOGIN_ERROR_MES' | translate }}
+            </div>
+            <div class="form-group has-feedback">
+                <label for="name">{{ 'LOGIN.EMAIL' | translate }}</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="vm.account.email" required>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="text-red">{{ 'LOGIN.INVALID_EMAIL' | translate }}</p>
+            <div class="form-group has-feedback">
+                <label for="name">{{ 'LOGIN.PASSWORD' | translate }}</label>
+                <input type="password" class="form-control" placeholder="Password" ng-model="vm.account.password" required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+        </form>
+
+        <button ng-disabled="loginForm.$invalid" ng-click="vm.login();" type="submit" class="btn btn-primary btn-block btn-flat">{{ 'BOTTON.SIGIN' | translate }}</button>
+
+    </div>
+</div>

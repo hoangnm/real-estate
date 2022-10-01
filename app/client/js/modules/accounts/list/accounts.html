@@ -1,0 +1,41 @@
+<div class="content-main-view ">
+    <section class="content-header">
+        <h1>
+            {{ 'MENU.ACCOUNT_MANAGEMENT' | translate }}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'BREADCRUMB.HOMEPAGE' | translate }}</a></li>
+            <li class="active">{{ 'BREADCRUMB.ACCOUNT' | translate }}</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="list-product">
+            <div class="box box-primary">
+                <spinner show="vm.isLoading"></spinner>
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ 'ACCOUNT.ACCOUNT_LIST' | translate }}</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn-sm btn btn-info" ng-click="vm.openEditor();">
+                            {{ 'BOTTON.ADD_NEW' | translate }} 
+                            <i class="fa fa-plus-circle "></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered table-striped list-product-table">
+                        <tr ng-repeat="row in $data" ui-sref="management.account({id:row.id})">
+                            <td data-header-class="'hidden-xs max-width-td'" class="hidden-xs" data-title="'COMMON.NO' | translate">{{$index + 1}}</td>
+                            <td data-title="'ACCOUNT.NAME' | translate" filter="{full_name: 'text'}" sortable="'full_name'">{{row.full_name}}</td>
+                            <td data-title="'ACCOUNT.EMAIL' | translate" filter="{email: 'text'}" sortable="'email'">{{row.email}}</td>
+                            <td data-title="'ACCOUNT.MOBILE_PHONE' | translate" filter="{mobile_phone: 'text'}" sortable="'mobile_phone'">{{row.mobile_phone}}</td>
+                            <td class="list-items-action">
+                                <button type="button" ng-click="$event.stopPropagation();vm.openEditor(row.id);" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button type="button" ng-click="$event.stopPropagation();vm.deleteAccount(row.id);" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

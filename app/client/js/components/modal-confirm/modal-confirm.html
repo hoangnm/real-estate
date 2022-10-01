@@ -1,0 +1,14 @@
+<div class="customer-editor">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" ng-click="vm.close()">&times;</span></button>
+        <h3 class="modal-title">{{vm.confirmTitle}}</h3>
+    </div>
+    <div class="modal-body form" modal-body>
+        <p><b>{{vm.message}} </b></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()"> {{'BOTTON.NO' | translate}}</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.save()">{{'BOTTON.YES' | translate}}</button>
+    </div>
+</div>

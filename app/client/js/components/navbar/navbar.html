@@ -1,0 +1,43 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a class="logo">
+        <span class="logo-mini">{{ 'COMMON.WEB_TITLE_ACRONYM' | translate }}</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>{{ 'COMMON.WEB_TITLE' | translate }}</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only"></span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="../../../img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <span class="hidden-xs">Admin</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">{{ 'MENU.PROFILE' | translate }}</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">{{ 'MENU.LOGOUT' | translate }}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                <li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

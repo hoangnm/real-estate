@@ -1,0 +1,38 @@
+<div class="box box-widget">
+    <spinner show="vm.isLoading"></spinner>
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" ng-click="vm.cancel()">&times;</span></button>
+        <h3 class="box-title "><b> {{ 'ACCOUNT.' + (vm.accountId > 0 ? "EDIT_ACCOUNT":"ADD_ACCOUNT") | translate }} </b></h3>
+    </div>
+    <div class="box-body">
+        <form name="groupEditor" role="form">
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="name">{{ 'ACCOUNT.NAME' | translate }}</label>
+                    <input type="text" class="form-control" id="name" ng-model="vm.account.full_name">
+                </div>
+                <div class="form-group">
+                    <label for="name">{{ 'ACCOUNT.EMAIL' | translate }}</label>
+                    <input type="text" class="form-control" id="name" ng-model="vm.account.email">
+                </div>
+                <div class="form-group">
+                    <label for="name">{{ 'ACCOUNT.MOBILE_PHONE' | translate }}</label>
+                    <input type="text" class="form-control" id="name" ng-model="vm.account.mobile_phone">
+                </div>
+                <div class="form-group">
+                    <label for="name">{{ 'ACCOUNT.AREA_MANAGEMENT' | translate }}</label>
+                    <input type="text" class="form-control" id="name" ng-model="vm.account.area_management">
+                </div>
+                <div class="form-group">
+                    <label for="name">{{ 'ACCOUNT.GROUP_ACCOUNT' | translate }}</label>
+                    <select class="form-control" ng-options="item.id as item.group_name for item in vm.groups " ng-model="vm.account.group_account_id"></select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.cancel()"> {{ 'BOTTON.CANCEL' | translate }}</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.save()">{{ 'BOTTON.SAVE' | translate }}</button>
+    </div>
+</div>

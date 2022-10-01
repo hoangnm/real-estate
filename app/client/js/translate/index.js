@@ -1,0 +1,202 @@
+
+export default function translation($translateProvider) {
+  'ngInject';
+
+  $translateProvider.translations('vn', translate());
+  $translateProvider.useSanitizeValueStrategy('escapeParameters');
+
+  function translate() {
+    return {
+      'PRODUCT':
+      {
+        'PRODUCT_DETAIL': 'Chi tiết sản phẩm',
+        'SEARCHING': 'Tìm kiếm',
+        'ADD_PRODUCT': 'Thêm mới sản phẩm',
+        'EDIT_PRODUCT': 'Cập nhật sản phẩm',
+        'IMAGE_MAP': 'Hình ảnh & bản đồ',
+        'PRODUCT_INFO': 'Thông tin sản phẩm',
+        'NAME': 'Tên sản phẩm',
+        'BUILDING_AREA': 'Diện tích sàn (m2)',
+        'DIRECTION': 'Hướng',
+        'RATING': 'Hạng',
+        'RENTABLE_AREA': 'Diện tích thuê',
+        'RENTABLE_AREA_DESCRIPTION': 'Diện tích thuê (Mô tả)',
+        'RENT_PRICE': 'Giá thuê',
+        'RENT_PRICE_DESCRIPTION': 'Giá thuê (Mô tả)',
+        'FULL_RENT_PRICE': 'Giá thuê chọn gói',
+        'RENT_DURATION': 'Thời gian cho thuê',
+        'SERVICE_FEE': 'Phí dịch vụ',
+        'MOTO_PACKING_FEE': 'Phí gửi xe mô tô',
+        'CAR_PACKING_FEE': 'Phí gửi xe ô tô',
+        'OVERTIME_FEE': 'Phí ngoài giờ',
+        'ELECTRIC_BILL': 'Tiền điện',
+        'WATER_BILL': 'Tiền nước',
+        'DESPOSIT': 'Tiền đặt cọc',
+        'BROKERAGE_FEE': 'Phí M.G',
+        'PAYMENT_METHOD': 'Hình thức thanh toán',
+        'DECORATION_DURARION': 'Thời gian trang trí',
+        'IMAGE': 'Hình ảnh',
+        'MAP': 'Bản đồ',
+        'MANAGER_NAME': 'Người quản lý',
+        'MANAGER_PHONE': 'Điện thoại quản lý',
+        'RESPONSIBLE_STAFF': 'Người phụ trách',
+        'HOUSE_TYPE': 'Loại nhà',
+        'PRODUCT_LIST': 'Danh sách',
+        'EMPTY_AREA': 'Diện tích trống',
+        'LOCATION': 'Vị trí',
+        'FULL_BLOCK': 'Nguyên căn',
+        'GROUND_FLOOR': 'Tầng trệt',
+        'FURNITURE': 'Nội thất',
+        'LINK_WEB': 'Link website',
+        'STRUCTURE': 'Kết cấu',
+
+      },
+      'CUSTOMER':
+      {
+        'CUSTOMER_LIST': 'Danh sách',
+        'CUSTOMER_DETAIL': 'Chi tiết khách hàng',
+        'SEARCHING': 'Tìm kiếm',
+        'ADD_CUSTOMER': 'Thêm mới khách hàng',
+        'EDIT_CUSTOMER': 'Cập nhật khách hàng',
+        'CUSTOMER_INFO': 'Thông tin khách hàng',
+        'FULL_NAME': 'Họ tên',
+        'PHONE': 'Di động',
+        'EMAIL': 'Email',
+        'DEMAND': 'Nhu cầu',
+        'CREATED_BY': 'Người nhập',
+        'CREATED_DATE': 'Ngày nhập',
+        'STATUS': 'Tình trạng',
+        'CUSTOMER_CARE_PROGRESS': 'Quá trình CSKH',
+        'STAFF_CARE': 'Nhân viên chăm sóc',
+        'COMPANY': 'Tên công ty',
+
+      },
+      'GROUP_ACCOUNT':
+      {
+        'GROUP_ACCOUNT_LIST': 'Danh sách',
+        'GROUP_ACCOUNT_DETAIL': 'Chi tiết nhóm tài khoản',
+        'SEARCHING': 'Tìm kiếm',
+        'ADD_GROUP_ACCOUNT': 'Thêm mới nhóm tài khoản',
+        'EDIT_GROUP_ACCOUNT': 'Cập nhật nhóm tài khoản',
+        'GROUP_ACCOUNT_INFO': 'Thông tin nhóm tài khoản',
+        'GROUP_ACCOUNT_PERMISSION': 'Phân quyền',
+        'GROUP_NAME': 'Tên nhóm',
+      },
+      'ACCOUNT':
+      {
+        'ACCOUNT_LIST': 'Danh sách',
+        'ACCOUNT_DETAIL': 'Chi tiết tài khoản',
+        'SEARCHING': 'Tìm kiếm',
+        'ADD_ACCOUNT': 'Thêm mới tài khoản',
+        'EDIT_ACCOUNT': 'Cập nhật tài khoản',
+        'ACCOUNT_INFO': 'Thông tin tài khoản',
+        'NAME': 'Tên',
+        'EMAIL': 'Email',
+        'MOBILE_PHONE': 'Số điện thoại',
+        'AREA_MANAGEMENT': 'Diện tích đảm nhận',
+        'GROUP_ACCOUNT': 'Nhóm tài khoản',
+      },
+      'COMMON':
+      {
+        'PROVINCE': 'Tỉnh/Thành phố',
+        'DISTRICT': 'Quận/Huyện',
+        'WARD': 'Phường/Xã',
+        'STREET': 'Đường/Số nhà',
+        'FROM': 'từ',
+        'TO': 'Đến',
+        'ADDRESS': 'Địa chỉ',
+        'DATE': 'Ngày',
+        'NO': 'STT',
+        'WEB_TITLE_ACRONYM': 'RE',
+        'WEB_TITLE': 'Real Estate',
+        'SELECTION': 'Chọn'
+
+      },
+      'BOTTON':
+      {
+        'SEARCHING': 'Tìm kiếm',
+        'REFRESH': 'Mặc định',
+        'CANCEL': 'Hủy',
+        'SAVE': 'Lưu',
+        'ADD_NEW': 'Tạo mới',
+        'IMPORT_FILE': 'Import',
+        'UPLOAD': 'Upload',
+        'YES': 'Có',
+        'NO': 'Không',
+        'SIGIN': 'Đăng nhập'
+      },
+      CONFIRM: {
+        'DEFAULT_CONFIRM_TITLE': 'Chú ý!',
+        'DEFAULT_CONFIRM_MES': 'Bạn có chắc chắn muốn thực hiện thao tác này?',
+        'DELETE_PRODUCT_CONFIRM_TITLE': 'Xóa sản phẩm',
+        'DELETE_PRODUCT_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa sản phẩm này?',
+        'DELETE_PRODUCTS_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa các sản phẩm đã chọn?',
+        'DELETE_CUSTOMER_CONFIRM_TITLE': 'Xóa khách hàng',
+        'DELETE_CUSTOMER_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa khách hàng này?',
+        'DELETE_CUSTOMERS_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa các khách hàng đã chọn?',
+        'DELETE_GROUP_ACCOUNT_CONFIRM_TITLE': 'Xóa nhóm tài khoản',
+        'DELETE_GROUP_ACCOUNT_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa nhóm tài khoản này?',
+        'DELETE_GROUP_ACCOUNTS_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa các nhóm tài khoản đã chọn?',
+        'DELETE_ACCOUNT_CONFIRM_TITLE': 'Xóa tài khoản',
+        'DELETE_ACCOUNT_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa tài khoản này?',
+        'DELETE_ACCOUNTS_CONFIRM_MES': 'Bạn có chắc chắn muốn xóa các tài khoản đã chọn?',
+      },
+      NOTIFICATION: {
+        'CREATE_PRODUCT_SUCCESS': 'Thêm mới sản phẩm thành công.',
+        'UPDATE_PRODUCT_SUCCESS': 'Cập nhật sản phẩm thành công.',
+        'DELETE_PRODUCT_SUCCESS': 'Xóa sản phẩm thành công.',
+        'CREATE_PRODUCT_ERROR': 'Thêm mới sản phẩm thất bại.',
+        'UPDATE_PRODUCT_ERROR': 'Cập nhật sản phẩm thất bại.',
+        'DELETE_PRODUCT_ERROR': 'Xóa sản phẩm thất bại.',
+        'IMPORT_PRODUCT_SUCCESS': 'Import sản phẩm thành công.',
+        'IMPORT_PRODUCT_ERROR': 'Import sản phẩm thất bại.',
+        'CREATE_CUSTOMER_SUCCESS': 'Thêm mới khách hàng thành công.',
+        'UPDATE_CUSTOMER_SUCCESS': 'Cập nhật khách hàng thành công.',
+        'DELETE_CUSTOMER_SUCCESS': 'Xóa khách hàng thành công.',
+        'CREATE_CUSTOMER_ERROR': 'Thêm mới khách hàng thất bại.',
+        'UPDATE_CUSTOMER_ERROR': 'Cập nhật khách hàng thất bại.',
+        'DELETE_CUSTOMER_ERROR': 'Xóa khách hàng thất bại.',
+        'IMPORT_CUSTOMER_SUCCESS': 'Import khách hàng thành công.',
+        'IMPORT_CUSTOMER_ERROR': 'Import khách hàng thất bại.',
+        'UPLOAD_IMAGE_ERROR': 'Import khách hàng thất bại.',
+        'CREATE_GROUP_ACCOUNT_SUCCESS': 'Thêm mới nhóm tài khoản thành công.',
+        'UPDATE_GROUP_ACCOUNT_SUCCESS': 'Cập nhật nhóm tài khoản thành công.',
+        'DELETE_GROUP_ACCOUNT_SUCCESS': 'Xóa khách hàng thành công.',
+        'CREATE_GROUP_ACCOUNT_ERROR': 'Thêm mới nhóm tài khoản thất bại.',
+        'UPDATE_GROUP_ACCOUNT_ERROR': 'Cập nhật nhóm tài khoản thất bại.',
+        'DELETE_GROUP_ACCOUNT_ERROR': 'Xóa nhóm tài khoản thất bại.',
+        'CREATE_ACCOUNT_SUCCESS': 'Thêm mới tài khoản thành công.',
+        'UPDATE_ACCOUNT_SUCCESS': 'Cập nhật tài khoản thành công.',
+        'DELETE_ACCOUNT_SUCCESS': 'Xóa khách thành công.',
+        'CREATE_ACCOUNT_ERROR': 'Thêm mới tài khoản thất bại.',
+        'UPDATE_ACCOUNT_ERROR': 'Cập nhật tài khoản thất bại.',
+        'DELETE_ACCOUNT_ERROR': 'Xóa tài khoản thất bại.',
+      },
+      MENU: {
+        'MENU_HEADER': 'DANH MỤC HỆ THỐNG',
+        'PRODUCT_MANAGEMENT': 'Quản lý sản phẩm',
+        'CUSTOMER_MANAGEMENT': 'Quản lý khách hàng',
+        'GROUP_ACCOUNT_MANAGEMENT': 'Quản lý nhóm tài khoản',
+        'ACCOUNT_MANAGEMENT': 'Quản lý tài khoản',
+        'PROFILE': 'Hồ sơ',
+        'LOGOUT': 'Đăng xuất',
+      },
+      BREADCRUMB: {
+        'HOMEPAGE': 'Trang trủ',
+        'PRODUCT': 'Sản phẩm',
+        'CUSTOMER': 'Khách hàng',
+        'GROUP_ACCOUNT': 'Nhóm tài khoản',
+        'ACCOUNT': 'Tài khoản'
+      },
+      LOGIN: {
+        'EMAIL': 'Email',
+        'PASSWORD': 'Mật khẩu',
+        'LOGIN_ERROR_MES': 'Địa chỉ e-mail hoặc mật khẩu chưa đúng, vui lòng kiểm tra lại.',
+        'INVALID_EMAIL': 'Địa chỉ e-mail không hợp lệ.',
+
+      }
+    };
+  }
+
+  $translateProvider.preferredLanguage('vn');
+}

@@ -1,0 +1,31 @@
+DELIMITER //
+DROP FUNCTION IF EXISTS CHECKBETWEEN
+//
+DELIMITER //
+CREATE FUNCTION CHECKBETWEEN(input VARCHAR(50), from_value INT SIGNED, to_value INT SIGNED) RETURNS INT SIGNED
+    DETERMINISTIC
+BEGIN
+    DECLARE min_value INT SIGNED;
+    DECLARE max_value INT SIGNED;
+    DECLARE first_string VARCHAR(50);
+    DECLARE second_string VARCHAR(50);
+    DECLARE output INT SIGNED;
+   
+    SET first_string = SUBSTRING_INDEX(input,',',1);
+    SET min_value = CONVERT(first_string, SIGNED);
+    SET max_value = min_value;
+    
+    IF LOCATE(',', input) > 0 THEN 
+    	SET second_string = SUBSTRING_INDEX(input,',',-1);
+    	SET max_value = CONVERT(second_string, SIGNED);
+    END IF;
+    
+    IF min_value >= from_value AND min_value <= to_value THEN SET output = 1;
+    ELSEIF max_value >= from_value AND max_value <= to_value THEN SET output = 1;
+    ELSE SET output = 0;
+    END IF;
+    
+    RETURN output;
+END
+
+//

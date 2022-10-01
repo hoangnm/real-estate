@@ -1,0 +1,171 @@
+<div class="box box-widget">
+    <spinner show="vm.isLoading"></spinner>
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" ng-click="vm.cancel()">&times;</span></button>
+        <h3 class="box-title "><b> {{ 'PRODUCT.' + (vm.productId>0 ? "EDIT_PRODUCT":"ADD_PRODUCT") | translate }} </b></h3>
+    </div>
+    <div class="box-body">
+        <form name="productEditor" role="form">
+            <uib-tabset active="active">
+                <uib-tab index="0" heading="{{ 'PRODUCT.PRODUCT_INFO' | translate }}">
+                    <div class="form-body content">
+                        <div class="form-group">
+                            <label for="product_name">{{ 'PRODUCT.NAME' | translate }}</label>
+                            <input type="text" class="form-control" id="product_name" ng-model="vm.product.product_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="PROVINCE">{{ 'COMMON.PROVINCE' | translate }}</label>
+                            <select class="form-control" ng-options="item.id as item.city_name for item in vm.cities" ng-model="vm.product.city_id"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_structure">{{ 'COMMON.DISTRICT' | translate }}</label>
+                            <select class="form-control" ng-options="item.id as item.district_name for item in vm.districts | filter:{ city_id : vm.product.city_id }"
+                                ng-model="vm.product.district_id"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_structure">{{ 'COMMON.WARD' | translate }}</label>
+                            <select class="form-control" ng-options="item.id as item.ward_name for item in vm.wards | filter:{ district_id : vm.product.district_id } "
+                                ng-model="vm.product.ward_id"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">{{ 'COMMON.STREET' | translate }}</label>
+                            <input type="text" class="form-control" id="address" ng-model="vm.product.address">
+                        </div>
+                        <div class="form-group">
+                            <label for="product_structure">{{ 'PRODUCT.STRUCTURE' | translate }}</label>
+                            <input type="text" class="form-control" id="product_structure" ng-model="vm.product.structure">
+                        </div>
+                        <div class="form-group">
+                            <label for="BUILDING_AREA">{{ 'PRODUCT.BUILDING_AREA' | translate }}</label>
+                            <input type="text" class="form-control" id="BUILDING_AREA" ng-model="vm.product.building_area">
+                        </div>
+                        <div class="form-group">
+                            <label for="DIRECTION">{{ 'PRODUCT.DIRECTION' | translate }}</label>
+                            <input type="text" class="form-control" id="DIRECTION" ng-model="vm.product.direction">
+                        </div>
+                        <div class="form-group">
+                            <label for="RATING">{{ 'PRODUCT.RATING' | translate }}</label>
+                            <input type="text" class="form-control" id="RATING" ng-model="vm.product.rating">
+                        </div>
+                        <div class="form-group">
+                            <label for="RENTABLE_AREA">{{ 'PRODUCT.RENTABLE_AREA' | translate }}</label>
+                            <input type="text" class="form-control" id="RENTABLE_AREA" ng-model="vm.product.rentable_area">
+                        </div>
+                        <div class="form-group">
+                            <label for="RENTABLE_AREA_DESCIPTION">{{ 'PRODUCT.RENTABLE_AREA_DESCRIPTION' | translate }}</label>
+                            <input type="text" class="form-control" id="RENTABLE_AREA_DESCIPTION" ng-model="vm.product.rentable_area_description">
+                        </div>
+                        <div class="form-group">
+                            <label for="RENT_PRICE">{{ 'PRODUCT.RENT_PRICE' | translate }}</label>
+                            <input type="text" class="form-control" id="RENT_PRICE" ng-model="vm.product.rent_price">
+                        </div>
+                        <div class="form-group">
+                            <label for="RENT_PRICE_DESCIPTION">{{ 'PRODUCT.RENT_PRICE_DESCRIPTION' | translate }}</label>
+                            <input type="text" class="form-control" id="RENT_PRICE_DESCIPTION" ng-model="vm.product.rent_price_description">
+                        </div>
+                        <div class="form-group">
+                            <label for="SERVICE_FEE">{{ 'PRODUCT.SERVICE_FEE' | translate }}</label>
+                            <input type="text" class="form-control" id="SERVICE_FEE" ng-model="vm.product.services_fees">
+                        </div>
+                        <div class="form-group">
+                            <label for="FULL_RENT_PRICE">{{ 'PRODUCT.FULL_RENT_PRICE' | translate }}</label>
+                            <input type="text" class="form-control" id="FULL_RENT_PRICE" ng-model="vm.product.full_rent_price">
+                        </div>
+                        <div class="form-group">
+                            <label for="MOTO_PACKING_FEE">{{ 'PRODUCT.MOTO_PACKING_FEE' | translate }}</label>
+                            <input type="text" class="form-control" id="MOTO_PACKING_FEE" ng-model="vm.product.motor_parking_fee">
+                        </div>
+                        <div class="form-group">
+                            <label for="CAR_PACKING_FEE">{{ 'PRODUCT.CAR_PACKING_FEE' | translate }}</label>
+                            <input type="text" class="form-control" id="CAR_PACKING_FEE" ng-model="vm.product.car_parking_fee">
+                        </div>
+                        <div class="form-group">
+                            <label for="OVERTIME_FEE">{{ 'PRODUCT.OVERTIME_FEE' | translate }}</label>
+                            <input type="text" class="form-control" id="OVERTIME_FEE" ng-model="vm.product.overtime_fee">
+                        </div>
+                        <div class="form-group">
+                            <label for="ELECTRIC_BILL">{{ 'PRODUCT.ELECTRIC_BILL' | translate }}</label>
+                            <input type="text" class="form-control" id="ELECTRIC_BILL" ng-model="vm.product.electric_bill">
+                        </div>
+                        <div class="form-group">
+                            <label for="WATER_BILL">{{ 'PRODUCT.WATER_BILL' | translate }}</label>
+                            <input type="text" class="form-control" id="WATER_BILL" ng-model="vm.product.water_bill">
+                        </div>
+                        <div class="form-group">
+                            <label for="DESPOSIT">{{ 'PRODUCT.DESPOSIT' | translate }}</label>
+                            <input type="text" class="form-control" id="DESPOSIT" ng-model="vm.product.deposit">
+                        </div>
+                        <div class="form-group">
+                            <label for="PAYMENT_METHOD">{{ 'PRODUCT.PAYMENT_METHOD' | translate }}</label>
+                            <input type="text" class="form-control" id="PAYMENT_METHOD" ng-model="vm.product.payment_method">
+                        </div>
+                        <div class="form-group">
+                            <label for="RENT_DURATION">{{ 'PRODUCT.RENT_DURATION' | translate }}</label>
+                            <input type="text" class="form-control" id="RENT_DURATION" ng-model="vm.product.rent_duration">
+                        </div>
+                        <div class="form-group">
+                            <label for="DECORATION_DURARION">{{ 'PRODUCT.DECORATION_DURARION' | translate }}</label>
+                            <input type="text" class="form-control" id="DECORATION_DURARION" ng-model="vm.product.decoration_duration">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="MANAGER_NAME">{{ 'PRODUCT.MANAGER_NAME' | translate }}</label>
+                            <input type="text" class="form-control" id="MANAGER_NAME" ng-model="vm.product.manager_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="MANAGER_PHONE">{{ 'PRODUCT.MANAGER_PHONE' | translate }}</label>
+                            <input type="text" class="form-control" id="MANAGER_PHONE" ng-model="vm.product.manager_phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="BROKERAGE_FEE">{{ 'PRODUCT.BROKERAGE_FEE' | translate }}</label>
+                            <input type="text" class="form-control" id="BROKERAGE_FEE" ng-model="vm.product.brokerage_fee">
+                        </div>
+                        <div class="form-group">
+                            <label for="FULL_BLOCK">{{ 'PRODUCT.FULL_BLOCK' | translate }}</label>
+                            <input type="text" class="form-control" id="FULL_BLOCK" ng-model="vm.product.full_block">
+                        </div>
+                        <div class="form-group">
+                            <label for="GROUND_FLOOR">{{ 'PRODUCT.GROUND_FLOOR' | translate }}</label>
+                            <input type="text" class="form-control" id="GROUND_FLOOR" ng-model="vm.product.ground_floor">
+                        </div>
+                        <div class="form-group">
+                            <label for="FURNITURE">{{ 'PRODUCT.FURNITURE' | translate }}</label>
+                            <input type="text" class="form-control" id="FURNITURE" ng-model="vm.product.furniture">
+                        </div>
+                        <div class="form-group">
+                            <label for="LINK_WEB">{{ 'PRODUCT.LINK_WEB' | translate }}</label>
+                            <input type="text" class="form-control" id="LINK_WEB" ng-model="vm.product.website_url">
+                        </div>
+                        <div class="form-group">
+                            <label for="RESPONSIBLE_STAFF">{{ 'PRODUCT.RESPONSIBLE_STAFF' | translate }}</label>
+                            <ui-select multiple name="assignees" ng-model="vm.product.assignees">
+                                <ui-select-match>{{$item.full_name}}</ui-select-match>
+                                <ui-select-choices repeat="staff.id as staff in vm.staffs | filter:$select.search track by $index">
+                                    <div ng-bind-html="staff.full_name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </uib-tab>
+
+                <uib-tab index="3" heading="{{ 'PRODUCT.IMAGE' | translate }}">
+                    <div class="form-body content">
+                        <div class="form-group">
+                            <button type="file" ngf-select="vm.uploadFile($file, $invalidFiles)" class="btn btn-warning btn-import-file" ngf-max-height="5000"
+                                ngf-max-size="20MB" accept="image/*">
+                            {{ 'BOTTON.UPLOAD' | translate }} <i class="fa fa-image"></i></button>
+                        </div>
+                        <img class="img-responsive" ngf-src="vm.image">
+                    </div>
+
+                </uib-tab>
+            </uib-tabset>
+
+        </form>
+    </div>
+    <div class="box-footer modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.cancel()"> {{ 'BOTTON.CANCEL' | translate }}</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.save()">{{ 'BOTTON.SAVE' | translate }}</button>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="content-main-view">
+    <div class="content-header">
+        <h1>
+            {{ 'GROUP_ACCOUNT.GROUP_ACCOUNT_DETAIL' | translate }}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'BREADCRUMB.HOMEPAGE' | translate }}</a></li>
+            <li><a ui-sref="group_accounts">{{ 'BREADCRUMB.GROUP_ACCOUNT' | translate }}</a></li>
+            <li class="active">{{ 'GROUP_ACCOUNT.GROUP_ACCOUNT_DETAIL' | translate }}</li>
+        </ol>
+    </div>
+
+    <div class="group_account-info content">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-primary">
+                    <spinner show="vm.isLoading"></spinner>
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> {{ 'GROUP_ACCOUNT.GROUP_ACCOUNT_INFO' | translate }}</h3>
+                    </div>
+                    <div class="box-body no-padding">
+                        <table class="table table-striped table_info">
+                            <tr>
+                                <td class="first_td">{{ 'GROUP_ACCOUNT.GROUP_NAME' | translate }}</td>
+                                <td>{{vm.group_account.group_name}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <spinner show="vm.isLoading"></spinner>
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> {{ 'GROUP_ACCOUNT.GROUP_ACCOUNT_PERMISSION' | translate }}</h3>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="group-account-action">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row text-center">
+                                            <div class="col-xs-3">
+                                                <b>Xem</b>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <b>Thêm mới</b>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <b>Chỉnh sửa</b>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <b>Xóa</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="group-account-resource" ng-repeat="item in vm.app_resources">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <b>{{item.resource_name}}</b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row text-center">
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" ng-model="item.view" ng-change="vm.savePermission(item, 'view')">
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" ng-model="item.create" ng-change="vm.savePermission(item, 'create')">
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" ng-model="item.update" ng-change="vm.savePermission(item, 'update')">
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" ng-model="item.delete" ng-change="vm.savePermission(item, 'delete')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="box box-widget">
+    <spinner show="vm.isLoading"></spinner>
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" ng-click="vm.cancel()">&times;</span></button>
+        <h3 class="box-title "><b> {{ 'GROUP_ACCOUNT.' + (vm.groupId > 0 ? "EDIT_GROUP_ACCOUNT":"ADD_GROUP_ACCOUNT") | translate }} </b></h3>
+    </div>
+    <div class="box-body">
+        <form name="groupEditor" role="form">
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="group_name">{{ 'GROUP_ACCOUNT.GROUP_NAME' | translate }}</label>
+                    <input type="text" class="form-control" id="group_name" ng-model="vm.group_account.group_name">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.cancel()"> {{ 'BOTTON.CANCEL' | translate }}</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.save()">{{ 'BOTTON.SAVE' | translate }}</button>
+    </div>
+</div>

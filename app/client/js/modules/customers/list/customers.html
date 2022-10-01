@@ -1,0 +1,110 @@
+<div class="content-main-view ">
+    <section class="content-header">
+        <h1>
+            {{ 'MENU.CUSTOMER_MANAGEMENT' | translate }}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'BREADCRUMB.HOMEPAGE' | translate }}</a></li>
+            <li class="active">{{ 'BREADCRUMB.CUSTOMER' | translate }}</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="search-block">
+            <div class="box box-primary" widget-custom>
+                <spinner show="vm.isLoading"></spinner>
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ 'CUSTOMER.SEARCHING' | translate }}</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool btn-collapse-wd" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form name="vm.searchCustomerForm">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Fullname">{{ 'CUSTOMER.FULL_NAME' | translate }}</label>
+                                    <input type="text" class="form-control" id="Fullname" name="full_name" ng-model="vm.searchOption.full_name" placeholder="{{ 'CUSTOMER.FULL_NAME' | translate }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Phone">{{ 'CUSTOMER.PHONE' | translate }}</label>
+                                    <input type="text" class="form-control" id="Phone" name="phone" ng-model="vm.searchOption.phone" placeholder="{{ 'CUSTOMER.PHONE' | translate }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Email">{{ 'CUSTOMER.EMAIL' | translate }}</label>
+                                    <input type="text" class="form-control" id="Email" name="email" ng-model="vm.searchOption.email" placeholder="{{ 'CUSTOMER.EMAIL' | translate }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ 'CUSTOMER.STATUS' | translate }}</label>
+                                    <select class="form-control" ng-options="item.id as item.status_name for item in vm.status" name="status" ng-model="vm.searchOption.customer_status_id">
+                                        <option value="">Tất cả</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button ng-click="vm.searchCustomer();" type="button" class="btn btn-info btn-md">{{ 'BOTTON.SEARCHING' | translate }} <i class="fa fa-search"></i></button>
+                                <button ng-click="vm.clearSearch();" type="button" class="btn btn-warning btn-md">{{ 'BOTTON.REFRESH' | translate }} <i class="fa fa-refresh"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="list-product">
+            <div class="box box-primary">
+                <spinner show="vm.isLoading"></spinner>
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ 'CUSTOMER.CUSTOMER_LIST' | translate }}</h3>
+                    <div class="box-tools">
+                        <button class="pull-right btn-sm btn btn-info" ng-click="vm.openEditor();">
+                            {{ 'BOTTON.ADD_NEW' | translate }} <i class="fa fa-plus-circle "></i>
+                        </button>
+                        <button type="file" ngf-select="vm.uploadFile($file, $invalidFiles)" class="pull-right btn-sm btn btn-warning btn-import-file"
+                            ngf-max-size="20MB">
+                            {{ 'BOTTON.IMPORT_FILE' | translate }} <i class="fa fa-upload"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="mailbox-controls">
+                        <button type="button" ng-click="vm.selectedItems();vm.selectAll = !vm.selectAll" class="btn btn-default btn-xs"><i class="fa" ng-class="{'fa-check-square-o': vm.selectAll ,'fa-square-o' : !vm.selectAll  }"></i></button>
+                        <div class="btn-group">
+                            <button ng-disabled="vm.hasItemsChecked()" type="button" ng-click="vm.deleteItems();" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                        </div>
+                    </div>
+                    <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered table-striped list-product-table">
+                        <tr ng-repeat="row in $data track by $index" ui-sref="management.customer({id:row.id})">
+                            <td class="text-center"><input ng-model="row.checked" ng-click="$event.stopPropagation();" type="checkbox"></td>
+                            <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'COMMON.NO' | translate">{{$index + 1}}</td>
+                            <td data-title="'CUSTOMER.FULL_NAME' | translate" filter="{full_name: 'text'}" sortable="'full_name'">{{row.full_name}}</td>
+                            <td data-title="'CUSTOMER.PHONE' | translate" filter="{phone: 'text'}" sortable="'phone_number'">{{row.phone_number}}</td>
+                            <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'CUSTOMER.EMAIL' | translate" filter="{email: 'text'}"
+                                sortable="'email'">{{row.email}}</td>
+                            <td data-title="'CUSTOMER.DEMAND' | translate" filter="{demand: 'text'}" sortable="'demand'">{{row.demand}}</td>
+                            <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'CUSTOMER.CUSTOMER_CARE_PROGRESS' | translate" filter="{customer_care_progress: 'text'}"
+                                sortable="'customer_care_progress'">{{row.customer_care_progress}}</td>
+                            <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'CUSTOMER.CREATED_BY' | translate" filter="{created_by: 'text'}"
+                                sortable="'created_by'">{{row.created_by}}</td>
+                            <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'CUSTOMER.CREATED_DATE' | translate" filter="{created_date: 'text'}"
+                                sortable="'created_date'">{{row.created_date | date:'dd/MM/yyyy'}}</td>
+                            <td data-header-class="'hidden-xs'" class="hidden-xs min-width-td" data-title="'CUSTOMER.STATUS' | translate" sortable="'customer_status.status_name'">{{row.customer_status.status_name}}</td>
+                            <td class="list-items-action">
+                                <button type="button" ng-click="$event.stopPropagation();vm.openEditor(row.id);" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button type="button" ng-click="$event.stopPropagation();vm.deleteCustomer(row.id);" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

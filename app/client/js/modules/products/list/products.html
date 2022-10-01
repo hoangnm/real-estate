@@ -1,0 +1,209 @@
+<div class="content-main-view">
+  <section class="content-header">
+    <h1>
+      {{ 'MENU.PRODUCT_MANAGEMENT' | translate }}
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'BREADCRUMB.HOMEPAGE' | translate }}</a></li>
+      <li class="active">{{ 'BREADCRUMB.PRODUCT' | translate }}</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="search-block">
+      <div class="box box-primary" widget-custom>
+        <spinner show="vm.isLoading"></spinner>
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ 'PRODUCT.SEARCHING' | translate }}</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool btn-collapse-wd" data-widget="collapse"><i class="fa fa-minus fa-widget-custom"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body">
+          <form name="vm.searchProductForm">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="ProductName">{{ 'PRODUCT.NAME' | translate }}</label>
+                  <input type="text" class="form-control" id="ProductName" name="product_name" ng-model="vm.searchOption.product_name" placeholder="{{ 'PRODUCT.NAME' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="AreaOfScaffold">{{ 'PRODUCT.BUILDING_AREA' | translate }}</label>
+                  <input type="text" class="form-control" id="AreaOfScaffold" name="building_area" ng-model="vm.searchOption.building_area"
+                    placeholder="{{ 'PRODUCT.BUILDING_AREA' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="Direction">{{ 'PRODUCT.DIRECTION' | translate }}</label>
+                  <input type="text" class="form-control" id="Direction" name="direction" ng-model="vm.searchOption.direction" placeholder="{{ 'PRODUCT.DIRECTION' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="Level">{{ 'PRODUCT.RATING' | translate }}</label>
+                  <input type="text" class="form-control" id="Level" name="rating" ng-model="vm.searchOption.rating" placeholder="{{ 'PRODUCT.RATING' | translate }}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>{{ 'COMMON.PROVINCE' | translate }}</label>
+                  <select class="form-control" ng-options="item.id as item.city_name for item in vm.cities" name="city_id" ng-model="vm.searchOption.city_id"></select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>{{ 'COMMON.DISTRICT' | translate }}</label>
+                  <select class="form-control" ng-options="item.id as item.district_name for item in vm.districts | filter:{ city_id : vm.searchOption.city_id }:true"
+                    name="district_id" ng-model="vm.searchOption.district_id"></select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>{{ 'COMMON.WARD' | translate }}</label>
+                  <select class="form-control" ng-options="item.id as item.ward_name for item in vm.wards | filter:{ district_id : vm.searchOption.district_id }:true"
+                    name="ward_id" ng-model="vm.searchOption.ward_id"></select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="AddressInput">{{ 'COMMON.STREET' | translate }}</label>
+                  <input type="text" class="form-control" id="AddressInput" name="address" ng-model="vm.searchOption.address" placeholder="{{ 'COMMON.STREET' | translate }}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="AreaForLeaseFrom">{{ 'PRODUCT.RENTABLE_AREA' | translate }} {{ 'COMMON.FROM' | translate }}</label>
+                  <input type="text" class="form-control" id="AreaForLeaseFrom" name="rentable_area_from" ng-model="vm.rentable_area_from"
+                    placeholder="{{ 'PRODUCT.RENTABLE_AREA' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="AreaForLeaseTo">{{ 'COMMON.TO' | translate }}</label>
+                  <input type="text" class="form-control" id="AreaForLeaseTo" name="rentable_area_to" ng-model="vm.rentable_area_to" placeholder="{{ 'PRODUCT.RENTABLE_AREA' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="PriceForLeaseFrom">{{ 'PRODUCT.RENT_PRICE' | translate }} {{ 'COMMON.FROM' | translate }}</label>
+                  <input type="text" class="form-control" id="PriceForLeaseFrom" name="rent_price_from" ng-model="vm.rent_price_from" placeholder="{{ 'PRODUCT.RENT_PRICE' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="PriceForLeaseTo">{{ 'COMMON.TO' | translate }}</label>
+                  <input type="text" class="form-control" id="PriceForLeaseTo" name="rent_price_to" ng-model="vm.rent_price_to" placeholder="{{ 'PRODUCT.RENT_PRICE' | translate }}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="ManagementPerson">{{ 'PRODUCT.MANAGER_NAME' | translate }}</label>
+                  <input type="text" class="form-control" id="ManagementPerson" name="manager_name" ng-model="vm.searchOption.manager_name"
+                    placeholder="{{ 'PRODUCT.MANAGER_NAME' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="ManagementPersonPhone">{{ 'PRODUCT.MANAGER_PHONE' | translate }}</label>
+                  <input type="text" class="form-control" id="ManagementPersonPhone" name="manager_phone" ng-model="vm.searchOption.manager_phone"
+                    placeholder="{{ 'PRODUCT.MANAGER_PHONE' | translate }}">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="StaffAssignment">{{ 'PRODUCT.RESPONSIBLE_STAFF' | translate }}</label>
+                  <ui-select name="assignees" ng-model="vm.searchOption.assignees">
+                    <ui-select-match>{{$select.selected.full_name}}</ui-select-match>
+                    <ui-select-choices repeat="staff in vm.staffs | filter:$select.search track by $index">
+                      <div ng-bind-html="staff.full_name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="houseType">{{ 'PRODUCT.HOUSE_TYPE' | translate }}</label>
+                  <ui-select multiple name="house_type" ng-model="vm.searchOption.house_type">
+                    <ui-select-match>{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="house in vm.houseType | filter:$select.search track by $index">
+                      <div ng-bind-html="house.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button ng-click="vm.searchProduct();" type="button" class="btn btn-info btn-md">{{ 'BOTTON.SEARCHING' | translate }} <i class="fa fa-search"></i></button>
+                <button ng-click="vm.clearSearch();" type="button" class="btn btn-warning btn-md">{{ 'BOTTON.REFRESH' | translate }} <i class="fa fa-refresh"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="list-product">
+      <div class="box box-primary">
+        <spinner show="vm.isLoading"></spinner>
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ 'PRODUCT.PRODUCT_LIST' | translate }}</h3>
+          <div class="box-tools">
+            <button class="pull-right btn btn-sm btn-info" ng-click="vm.openEditor();">
+              {{ 'BOTTON.ADD_NEW' | translate }} <i class="fa fa-plus-circle "></i>
+            </button>
+            <button type="file" ngf-select="vm.uploadFile($file, $invalidFiles)" class="pull-right btn-sm btn btn-warning btn-import-file"
+              ngf-max-size="20MB">
+                {{ 'BOTTON.IMPORT_FILE' | translate }} <i class="fa fa-upload"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="mailbox-controls">
+            <button type="button" ng-click="vm.selectedItems();vm.selectAll = !vm.selectAll" class="btn btn-default btn-xs"><i class="fa" ng-class="{'fa-check-square-o': vm.selectAll ,'fa-square-o' : !vm.selectAll  }"></i></button>
+            <div class="btn-group">
+              <button ng-disabled="vm.hasItemsChecked()" type="button" ng-click="vm.deleteItems();" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+            </div>
+          </div>
+          <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered table-hover list-product-table">
+            <tr ng-repeat="row in $data track by $index" ui-sref="management.product({id:row.id})">
+              <td class="text-center"><input ng-model="row.checked" ng-click="$event.stopPropagation();" type="checkbox"></td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'COMMON.NO' | translate">{{$index + 1}}</td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'COMMON.DATE' | translate" filter="{created_at: 'text'}"
+                sortable="'created_at'">{{row.created_at | date:'dd/MM/yyyy'}}</td>
+              <td data-title="'PRODUCT.NAME' | translate" filter="{product_name: 'text'}" sortable="'product_name'">{{row.product_name}}</td>
+              <td data-title="'COMMON.ADDRESS' | translate" filter="{address: 'text'}" sortable="'address'">{{row.address}}</td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'PRODUCT.MANAGER_NAME' | translate" filter="{manager_name: 'text'}"
+                sortable="'manager_name'">{{row.manager_name}}</td>
+              <td data-title="'PRODUCT.MANAGER_PHONE' | translate" filter="{phone_number: 'text'}" sortable="'phone_number'">{{row.phone_number}}</td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'PRODUCT.BUILDING_AREA' | translate" filter="{building_area: 'text'}"
+                sortable="'building_area'">{{row.building_area}}</td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'PRODUCT.EMPTY_AREA' | translate" filter="{rentable_area: 'text'}"
+                sortable="'rentable_area'">{{row.rentable_area}}</td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'PRODUCT.RENT_PRICE' | translate" filter="{rent_price: 'text'}"
+                sortable="'rent_price'">{{row.rent_price}}</td>
+              <td data-header-class="'hidden-xs'" class="hidden-xs" data-title="'PRODUCT.BROKERAGE_FEE' | translate" filter="{brokerage_fee: 'text'}"
+                sortable="'brokerage_fee'">{{row.brokerage_fee}}</td>
+              <td class="list-items-action">
+                <button type="button" ng-click="$event.stopPropagation();vm.openEditor(row.id);" class="btn btn-info btn-xs"><i class="fa fa-pencil "></i></button>
+                <button type="button" ng-click="$event.stopPropagation();vm.deleteProduct(row.id);" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,56 @@
+<div class="box box-widget">
+    <spinner show="vm.isLoading"></spinner>
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" ng-click="vm.cancel()">&times;</span></button>
+        <h3 class="box-title "><b> {{ 'CUSTOMER.' + (vm.customerId>0 ? "EDIT_CUSTOMER":"ADD_CUSTOMER") | translate }} </b></h3>
+    </div>
+    <div class="box-body">
+        <form name="customerEditor" role="form">
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="full_name">{{ 'CUSTOMER.FULL_NAME' | translate }}</label>
+                    <input type="text" class="form-control" id="full_name" ng-model="vm.customer.full_name">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">{{ 'CUSTOMER.PHONE' | translate }}</label>
+                    <input type="text" class="form-control" id="phone" ng-model="vm.customer.phone_number">
+                </div>
+                <div class="form-group">
+                    <label for="email">{{ 'CUSTOMER.EMAIL' | translate }}</label>
+                    <input type="text" class="form-control" id="email" ng-model="vm.customer.email">
+                </div>
+                <div class="form-group">
+                    <label for="company">{{ 'CUSTOMER.COMPANY' | translate }}</label>
+                    <input type="text" class="form-control" id="company" ng-model="vm.customer.company">
+                </div>
+                <div class="form-group">
+                    <label for="demand">{{ 'CUSTOMER.DEMAND' | translate }}</label>
+                    <textarea class="form-control" rows="3" id="demand" ng-model="vm.customer.demand"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">{{ 'CUSTOMER.STATUS' | translate }}</label>
+                    <select class="form-control" ng-options="item.id as item.status_name for item in vm.status " ng-model="vm.customer.customer_status_id"></select>
+                </div>
+                <div class="form-group">
+                    <label for="customer_care_progress">{{ 'CUSTOMER.CUSTOMER_CARE_PROGRESS' | translate }}</label>
+                    <textarea class="form-control" rows="3" id="demand" id="customer_care_progress" ng-model="vm.customer.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'CUSTOMER.STAFF_CARE' | translate }}</label>
+                    <ui-select multiple name="assignees" ng-model="vm.customer.assignees">
+                        <ui-select-match>{{$item.full_name}}</ui-select-match>
+                        <ui-select-choices repeat="staff.id as staff in vm.staffs | filter:$select.search">
+                            <div ng-bind-html="staff.full_name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.cancel()"> {{ 'BOTTON.CANCEL' | translate }}</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.save()">{{ 'BOTTON.SAVE' | translate }}</button>
+    </div>
+</div>
